@@ -102,8 +102,8 @@ int main(int argc, char *argv[]) {
   }
     
   BPMN::Model model(source);
-  
-  auto target = std::filesystem::canonical(outputDir + "/" + getBasename(source) + ".md");
+  std::filesystem::path path(outputDir + "/" + getBasename(source) + ".md");
+  auto target = path.lexically_normal().string();
   std::ofstream file( target );
   if (file.is_open()) { // Check if the file is opened successfully
     auto& output = file; // output now refers to the file stream
