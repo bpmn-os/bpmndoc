@@ -15,7 +15,7 @@ You can obtain `bpmn++` from https://github.com/bpmn-os/bpmnpp.
 
 ## Build the program
 
-The library is built like a typical CMake project. A normal build will look something like this (output omitted):
+The program is built like a typical CMake project. A normal build will look something like this (output omitted):
 
 ```sh
  ~/bpmndoc$ mkdir build
