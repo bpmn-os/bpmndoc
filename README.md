@@ -26,11 +26,19 @@ The program is built like a typical CMake project. A normal build will look some
 
 This creates an executable `bpmndoc` in the project directory.
 
+## Install the program
+
+You can install the program like this (output omitted):
+
+```sh
+ ~/bpmndoc/build$ sudo make install
+ ```
+
 ## Usage
 
-You can use the program as running
+You can run the program using
 ```sh
-./bpmndoc <fileName> [-o <outputDir>] [-i <imageDir>]
+bpmndoc <fileName> [-o <outputDir>] [-i <imageDir>]
 ```
 where
 - `<fileName>` is the file name of the BPMN model file,

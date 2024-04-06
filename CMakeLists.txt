@@ -32,7 +32,7 @@ if(NOT BPMNPP)
     message(FATAL_ERROR "bpmn++ not found")
 endif()
 
-# Link the executable target to the example_libraries
+# Link the application to required libraries
 target_link_libraries(bpmndoc ${XERCES_LIB} ${BPMNPP})
 
 target_compile_options(${CMAKE_PROJECT_NAME}
@@ -46,4 +46,7 @@ target_compile_options(${CMAKE_PROJECT_NAME}
   -Wconversion
   -Wsign-conversion
 )
+
+# Install the application
+install(TARGETS bpmndoc DESTINATION bin)
 
