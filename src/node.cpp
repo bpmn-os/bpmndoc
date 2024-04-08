@@ -124,7 +124,7 @@ Node::Node(BPMN::DataObject* dataObject)
 
 Node::Node(BPMN::SequenceFlow* sequenceFlow)
  : id(sequenceFlow->id)
- , type("Outgoing SequenceFlow")
+ , type("SequenceFlow")
  , documentation(
      sequenceFlow->element->getOptionalChild<XML::bpmn::tDocumentation>().has_value() ?
      sequenceFlow->element->getOptionalChild<XML::bpmn::tDocumentation>().value().get().textContent :
