@@ -40,6 +40,9 @@ void createDocumentation(std::ostream& output, const Node& node, const std::stri
       output << doc << "\n";
     }
 
+    for ( auto& sequenceFlow : node.sequenceFlows ) {
+      createDocumentation(output, sequenceFlow, baseName, imageDir);
+    }
     for ( auto& dataObject : node.dataObjects ) {
       createDocumentation(output, dataObject, baseName, imageDir);
     }
