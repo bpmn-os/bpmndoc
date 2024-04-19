@@ -91,6 +91,13 @@ void mdgen(
   }
   else {
     // root represents collaboration
+    if ( root.extensionElements.size() ) {
+      output << "```xml\n";
+      output << root.extensionElements;
+      output <<  "```\n";
+      output << "\n";
+    }
+
     for ( auto& process : root.processes ) {
       createDocumentation(output, process, baseName, imageDir);
     }

@@ -8,6 +8,11 @@ Node::Node(const BPMN::Model& model, XML::bpmn::tCollaboration& collaboration)
      collaboration.getOptionalChild<XML::bpmn::tDocumentation>().value().get().textContent : 
      ""
    )
+ , extensionElements(
+     collaboration.extensionElements && collaboration.extensionElements.has_value() ?
+     collaboration.extensionElements.value().get().format() :
+     ""
+   )
 {
 //std::cerr << type << std::endl;
   for ( auto& process : model.processes ) {
