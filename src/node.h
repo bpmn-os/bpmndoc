@@ -13,6 +13,7 @@ struct Node {
   std::list<Node> sequenceFlows;
   std::list<Node> messageFlows;
   std::list<Node> dataObjects;
+  std::list<Node> dataStoreReferences;
   std::list<Node> flowNodes;
   std::list<Node> eventSubProcesses;
   Node(const BPMN::Model& model, XML::bpmn::tCollaboration& collaboration);
@@ -20,6 +21,7 @@ struct Node {
   Node(BPMN::EventSubProcess* eventSubProcess);
   Node(BPMN::FlowNode* flowNode);
   Node(BPMN::DataObject* dataObject);
+  Node(XML::bpmn::tDataStoreReference& dataStoreReference);
   Node(BPMN::SequenceFlow* sequenceFlow);
   Node(BPMN::MessageFlow* messageFlow);
 private:

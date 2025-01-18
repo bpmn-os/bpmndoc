@@ -52,6 +52,10 @@ void createDocumentation(std::ostream& output, const Node& node, const std::stri
     for ( auto& eventSubProcess : node.eventSubProcesses ) {
       createDocumentation(output, eventSubProcess, baseName, imageDir);
     }
+    for ( auto& dataStoreReference : node.dataStoreReferences ) {
+      createDocumentation(output, dataStoreReference, baseName, imageDir);
+    }
+
 };
 
 
@@ -86,6 +90,9 @@ void mdgen(
     }
     for ( auto& eventSubProcess : root.eventSubProcesses ) {
       createDocumentation(output, eventSubProcess, baseName, imageDir);
+    }
+    for ( auto& dataStoreReference : root.dataStoreReferences ) {
+      createDocumentation(output, dataStoreReference, baseName, imageDir);
     }
     
   }

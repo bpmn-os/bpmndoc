@@ -43,7 +43,7 @@ bpmndoc <fileName> [-o <outputDir>] [-i <imageDir>]
 where
 - `<fileName>` is the file name of the BPMN model file,
 - `<outputDir>` is the path to the desired output directory,
-- `<imageDir>` is the path a directory where the diagrams of the model can be found.
+- `<imageDir>` is the path of the directory where the diagrams of the model can be found.
 
 The main diagram is assumed to have the path `<imageDir>/<baseName>.svg` where `<baseName>` is the base name of the BPMN model file, i.e. if `some_path/mymodel.bpm`, the `mymodel` is the base name. For all subprocesses, the diagram is assumed to have the path `<imageDir>/<baseName>-<nodeId>.svg` where `<baseName>` is the base name of the BPMN model file and `<nodeId>` is the `id` of the subprocess.
 

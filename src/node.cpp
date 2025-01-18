@@ -47,6 +47,12 @@ Node::Node(BPMN::Process* process)
   for ( auto& eventSubProcess : process->eventSubProcesses ) {
     eventSubProcesses.emplace_back(Node(eventSubProcess));
   }
+  
+  // data store references
+  for ( XML::bpmn::tDataStoreReference& dataStoreReference : process->element->getChildren<XML::bpmn::tDataStoreReference>() ) {
+    dataStoreReferences.emplace_back(Node(dataStoreReference));
+  }
+
 }
 
 Node::Node(BPMN::EventSubProcess* eventSubProcess)
@@ -72,6 +78,11 @@ Node::Node(BPMN::EventSubProcess* eventSubProcess)
   }
   for ( auto& eventSubProcess : eventSubProcess->eventSubProcesses ) {
     eventSubProcesses.emplace_back(Node(eventSubProcess));
+  }
+
+  // data store references
+  for ( XML::bpmn::tDataStoreReference& dataStoreReference : eventSubProcess->element->getChildren<XML::bpmn::tDataStoreReference>() ) {
+    dataStoreReferences.emplace_back(Node(dataStoreReference));
   }
 }
 
@@ -107,6 +118,11 @@ Node::Node(BPMN::FlowNode* flowNode)
     for ( auto& eventSubProcess : scope->eventSubProcesses ) {
       eventSubProcesses.emplace_back(Node(eventSubProcess));
     }
+
+    // data store references
+    for ( XML::bpmn::tDataStoreReference& dataStoreReference : scope->element->getChildren<XML::bpmn::tDataStoreReference>() ) {
+      dataStoreReferences.emplace_back(Node(dataStoreReference));
+    }
   }
 }
 
@@ -126,6 +142,24 @@ Node::Node(BPMN::DataObject* dataObject)
 {
 //std::cerr << type << std::endl;
 }
+
+Node::Node(XML::bpmn::tDataStoreReference& dataStoreReference) 
+ : id(dataStoreReference.id.value().get().value)
+ , type("DataStoreReference")
+ , documentation(
+     dataStoreReference.getOptionalChild<XML::bpmn::tDocumentation>().has_value() ?
+     dataStoreReference.getOptionalChild<XML::bpmn::tDocumentation>().value().get().textContent :
+     ""
+   )
+ , extensionElements(
+     dataStoreReference.extensionElements ?
+     dataStoreReference.extensionElements->get().format() :
+     ""
+   )
+{
+//std::cerr << type << std::endl;
+}
+
 
 Node::Node(BPMN::SequenceFlow* sequenceFlow)
  : id(sequenceFlow->id)
