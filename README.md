@@ -1,5 +1,8 @@
 # bpmndoc
 
+> [!WARNING]
+> This repository is archived and no longer maintained. For BPMN-OS models, [`bpmnosdoc`](https://github.com/bpmn-os/bpmnos-js) takes its place. For plain BPMN models there is no replacement.
+
 A tool to generate a documentation from a BPMN model. The tool includes BPMN documentation and extension elements` into the generated documentation. It includes the diagram for each (sub)process if available.
 
 ## Dependencies
